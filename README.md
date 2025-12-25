@@ -1,73 +1,45 @@
-# React + TypeScript + Vite
+Projekt Keyra
+Keyra is a React functional component designed to generate and manage cryptocurrency wallets. It supports both the generation of new wallets and the entry of existing recovery phrases. It displays generated private and public keys, provides functionality to copy them to the clipboard, and includes features for showing or hiding sensitive information.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Features
+Generate Wallet: Create a new wallet and view generated private and public keys.
+Import Wallet: Optionally enter an existing recovery phrase to generate keys.
+Toggle Visibility: Show or hide private keys and recovery phrases to enhance security.
+Copy to Clipboard: Easily copy private keys, public keys, and the recovery phrase.
+Installation
+Ensure you have Node.js and npm installed on your machine.
 
-Currently, two official plugins are available:
+Clone the repository or add the component to your existing React project.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Install the required dependencies.
 
-## React Compiler
+npm install tweetnacl bip39 ed25519-hd-key @solana/web3.js sonner lucide-react
+Import and use the WalletGenerator component in your project.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+State Management
+mnemonicWords: Stores the words of the recovery phrase.
+seed: Stores the seed derived from the mnemonic.
+privateKeys: Stores the generated private keys.
+publicKeys: Stores the generated public keys.
+showMnemonic: Boolean state to toggle the visibility of the recovery phrase.
+showPrivateKeys: Boolean state to toggle the visibility of private keys.
+How It Works
+Generating a Wallet:
 
-## Expanding the ESLint configuration
+Generates a new mnemonic phrase and derives the corresponding seed.
+Uses the seed to generate private and public keys.
+Displays the generated keys and mnemonic phrase.
+Importing a Wallet:
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+Optionally enter a recovery phrase to derive private and public keys.
+Visibility Toggle:
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+Private keys and recovery phrases can be toggled between visible and censored (asterisks) for security.
+Clipboard Copy:
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+Provides functionality to copy private keys, public keys, and the recovery phrase to the clipboard.
+Contributing
+Feel free to submit issues or pull requests. Contributions are welcome!
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
-
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+License
+This project is licensed under the MIT License.
